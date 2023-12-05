@@ -1,0 +1,31 @@
+% % 定义符号变量
+% syms u v a b;
+% 
+% % 定义等式
+% equ = [2*u+v==a,u*u-v==1+b];
+% 
+% % 解出 C
+% answ = solve(equ,[u,v])
+% 
+% 
+% % 输出 u 和 v 的值
+% u_value = answ.u;
+% v_value = answ.v;
+% 
+% 
+% disp(['u = ' char(u_value)]);
+% disp(['v = ' char(v_value)]);
+% 定义符号变量
+syms Vgd_ref V0 Kqv qg_ref S0 qg Vg_ref qg Vg Vs Thig Xgs Rgs Xgs;
+
+% 定义等式
+equ = [Vgd_ref==V0*Kqv*(qg_ref/S0-qg/S0)+Vg_ref,qg=={3*[Vg*(Vg-Vs*cos(Thig))*Xgs-Vg*Vs*sin(Thig)*Rgs]}/[2*(Xgs^2+Rgs^2)],Vg_ref==Vg];
+
+% 解出 C
+answ = solve(equ,[Vg])
+
+
+% 输出 u 和 v 的值
+Vg_value = answ;
+
+disp(['Vg = ' char(Vg_value)]);
